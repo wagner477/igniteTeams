@@ -8,7 +8,7 @@ import { Button } from "@components/Button";
 
 import { Container } from "./styles";
 import { ListEmpty } from "@components/ListEmpty";
-export function Groups() {
+export const Groups = () => {
   const [groups, setGroups] = useState<string[]>([
     "Galera da Rocketseat",
     "Galera do Discord",
@@ -38,4 +38,4 @@ export function Groups() {
       <Button title="Criar nova turma" />
     </Container>
   );
-}
+};
