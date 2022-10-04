@@ -9,7 +9,7 @@ import {
 import { Loading } from "@components/Loading/insex";
 
 import theme from "./src/theme";
-import { Groups } from "@screens/Groups";
+import { NewGroup } from "@screens/NewGroup";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,7 +25,7 @@ export default function App() {
         animated
         translucent
       />
-      {fontsLoaded ? <Groups /> : <Loading />}
+      {fontsLoaded ? <NewGroup /> : <Loading />}
     </ThemeProvider>
   );
 }
