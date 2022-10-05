@@ -7,9 +7,9 @@ type Props = TouchableOpacityProps &
     title: string;
   };
 
-export const Filter = ({ title, isActive = false, ...rest }: Props) => {
+export const Filter = ({ title, isActive = true, ...rest }: Props) => {
   return (
-    <Container {...rest}>
+    <Container isActive={isActive} {...rest}>
       <Title>{title}</Title>
     </Container>
   );
