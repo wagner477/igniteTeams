@@ -7,14 +7,32 @@ import { KeyboardAvoidingView, ScrollView } from "react-native";
 import { PaperclipHorizontal } from "phosphor-react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+import { groupCreate } from "@storage/group/groupCreate";
+import { Alert } from "react-native";
+import { AppError } from "@utils/AppError";
 
 export const NewGroup = () => {
   const navigation = useNavigation();
 
   const [group, setGroup] = useState("");
 
-  const handleCreateGroup = () => {
-    navigation.navigate("players", { group });
+  const handleCreateGroup = async () => {
+    try {
+      if (group.trim().length === 0) {
+        return Alert.alert("Novo Grupo", "O nome da turma não pode ser vazio");
+      }
+
+      await groupCreate(group);
+
+      navigation.navigate("players", { group });
+    } catch (error) {
+      if (error instanceof AppError) {
+        Alert.alert("Novo grupo", error.message);
+      } else {
+        Alert.alert("Novo grupo", "Não foi possível criar o grupo");
+        console.log(error);
+      }
+    }
   };
 
   return (
