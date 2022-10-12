@@ -9,7 +9,7 @@ import {
 import { Loading } from "@components/Loading/insex";
 
 import theme from "./src/theme";
-import { Players } from "@screens/Players";
+import { Routes } from "@routes/index";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,7 +25,7 @@ export default function App() {
         animated
         translucent
       />
-      {fontsLoaded ? <Players /> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   );
 }
