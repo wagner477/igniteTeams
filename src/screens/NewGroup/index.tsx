@@ -6,12 +6,15 @@ import { Container, Content, Icon } from "./styles";
 import { KeyboardAvoidingView, ScrollView } from "react-native";
 import { PaperclipHorizontal } from "phosphor-react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
 export const NewGroup = () => {
   const navigation = useNavigation();
 
+  const [group, setGroup] = useState("");
+
   const handleCreateGroup = () => {
-    navigation.navigate("players", { group: "Turma da Rocketseat" });
+    navigation.navigate("players", { group });
   };
 
   return (
@@ -25,7 +28,7 @@ export const NewGroup = () => {
           subtitle="Crie a turma para adicionar as pessoas"
         />
 
-        <Input placeholder="Nome da turma" />
+        <Input placeholder="Nome da turma" onChangeText={setGroup} />
         <Button
           title="Criar"
           style={{ marginTop: 20 }}
